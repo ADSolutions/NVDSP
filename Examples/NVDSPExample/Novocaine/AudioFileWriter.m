@@ -54,8 +54,8 @@ static pthread_mutex_t outputAudioFileLock;
 @synthesize currentFileTime = _currentFileTime;
 @synthesize callbackTimer = _callbackTimer;
 
-@synthesize currentTime = _currentTime;
-@synthesize duration = _duration;
+//@synthesize currentTime = _currentTime;
+//@synthesize duration = _duration;
 @synthesize samplingRate = _samplingRate;
 @synthesize latency = _latency;
 @synthesize numChannels = _numChannels;
