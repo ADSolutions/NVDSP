@@ -47,15 +47,13 @@
 @property (nonatomic, assign) UInt32 numSamplesReadPerPacket;
 @property (nonatomic, assign) UInt32 desiredPrebufferedSamples;
 @property (nonatomic, assign) SInt64 currentFileTime;
-@property (nonatomic, assign) dispatch_source_t callbackTimer;
+@property (nonatomic, strong) dispatch_source_t callbackTimer;
 
 - (void)bufferNewAudio;
 
 @end
 
-
 @implementation AudioFileReader
-
 
 - (void)dealloc
 {
@@ -72,16 +70,13 @@
     free(self.holdingBuffer);
     
     delete ringBuffer;
-    
 }
-
 
 - (id)initWithAudioFileURL:(NSURL *)urlToAudioFile samplingRate:(float)thisSamplingRate numChannels:(UInt32)thisNumChannels
 {
     self = [super init];
     if (self)
     {
-        
         // Zero-out our timer, so we know we're not using our callback yet
         self.callbackTimer = nil;
         
